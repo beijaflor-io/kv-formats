@@ -75,7 +75,7 @@ const plist: ConfigReader & ConfigWriter = {
   }
 };
 
-export const configuration = {
+const configuration = {
   querystring,
   yaml,
   yml: yaml,
@@ -85,10 +85,12 @@ export const configuration = {
   plist,
 };
 
-const [outputName, _from] = process.argv.slice(2);
-const inputName = path.extname(_from).slice(1);
-const inputFormat = configuration[inputName];
-const input = fs.readFileSync(_from).toString();
-const obj = inputFormat.parse(input);
-const outputFormat = configuration[outputName];
-console.log(outputFormat.stringify(obj))
+export default configuration;
+
+// const [outputName, _from] = process.argv.slice(2);
+// const inputName = path.extname(_from).slice(1);
+// const inputFormat = configuration[inputName];
+// const input = fs.readFileSync(_from).toString();
+// const obj = inputFormat.parse(input);
+// const outputFormat = configuration[outputName];
+// console.log(outputFormat.stringify(obj))
