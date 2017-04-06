@@ -1,0 +1,17 @@
+author: ""
+dependencies:
+  ini: ^1.3.4
+  js-yaml: ^3.8.3
+  msgpack: ^1.0.2
+  qs: ^6.4.0
+  toml-js: 0.0.8
+description: ""
+devDependencies:
+  typescript: ^2.2.2
+license: ISC
+main: index.js
+name: configuration
+scripts:
+  test: 'echo "Error: no test specified" && exit 1'
+version: 1.0.0
+
