@@ -64,7 +64,7 @@ const ini: ConfigReader & ConfigWriter = {
   }
 }
 
-const configuration = {
+export default const configuration = {
   querystring,
   yaml,
   yml: yaml,
@@ -73,11 +73,11 @@ const configuration = {
   json,
 }
 
-const [from, to] = process.argv.slice(2);
+// const [from, to] = process.argv.slice(2);
 
-const inputName = path.extname(from).slice(1);
-const inputFormat = configuration[inputName];
-const input = fs.readFileSync(from).toString();
-const obj = inputFormat.parse(input);
-const outputName = path.extname(to).slice(1);
-const outputFormat = configuration[outputName];
+// const inputName = path.extname(from).slice(1);
+// const inputFormat = configuration[inputName];
+// const input = fs.readFileSync(from).toString();
+// const obj = inputFormat.parse(input);
+// const outputName = path.extname(to).slice(1);
+// const outputFormat = configuration[outputName];
