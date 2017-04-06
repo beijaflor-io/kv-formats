@@ -1,11 +1,14 @@
+import * as Bluebird from 'bluebird';
 import * as fs from 'fs'
 import * as path from 'path'
 
-import * as _plist from 'plist';
 import * as _ini from 'ini';
+import * as _plist from 'plist';
 import * as _qs from 'qs';
 import * as _toml from 'toml-js';
 import * as _yaml from 'yamljs';
+
+Bluebird.promisifyAll(fs);
 
 interface ConfigReader {
   parse(inp: string): object;
@@ -86,6 +89,18 @@ const configuration = {
 };
 
 export default configuration;
+
+export async function readFileAuto(fp) {
+  const extname = path.extname(fp).slice(1);
+  const input = await (<any>fs).readFileAsync(fp).toString();
+  return configuration[extname].parse(input);
+}
+
+export function writeFileAuto(fp, contents) {
+  const extname = path.extname(fp).slice(1);
+  const output = configuration[extname].stringify(contents);
+  return (<any>fs).writeFileAsync(fp, output);
+}
 
 // const [outputName, _from] = process.argv.slice(2);
 // const inputName = path.extname(_from).slice(1);
