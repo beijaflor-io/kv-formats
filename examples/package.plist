@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>name</key>
+    <string>configuration</string>
+    <key>version</key>
+    <string>1.0.0</string>
+    <key>description</key>
+    <string/>
+    <key>main</key>
+    <string>index.js</string>
+    <key>scripts</key>
+    <dict>
+      <key>test</key>
+      <string>echo "Error: no test specified" &amp;&amp; exit 1</string>
+    </dict>
+    <key>author</key>
+    <string/>
+    <key>license</key>
+    <string>ISC</string>
+    <key>dependencies</key>
+    <dict>
+      <key>@types/node</key>
+      <string>^7.0.12</string>
+      <key>ini</key>
+      <string>^1.3.4</string>
+      <key>msgpack</key>
+      <string>^1.0.2</string>
+      <key>plist</key>
+      <string>^2.0.1</string>
+      <key>qs</key>
+      <string>^6.4.0</string>
+      <key>toml-js</key>
+      <string>0.0.8</string>
+      <key>yamljs</key>
+      <string>^0.2.9</string>
+    </dict>
+    <key>devDependencies</key>
+    <dict>
+      <key>typescript</key>
+      <string>^2.2.2</string>
+    </dict>
+  </dict>
+</plist>
