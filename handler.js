@@ -66,6 +66,11 @@ exports.convert = function(event, context, cb) {
 
   cb(null, {
     statusCode: 200,
+    headers: {
+      'content-type': `application/${mimeOutput}`,
+      'x-output-type': mimeOutput,
+      'x-input-type': mimeInput,
+    },
     body
   });
 };
