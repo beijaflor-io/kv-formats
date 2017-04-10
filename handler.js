@@ -11,10 +11,9 @@ function parseMime(str) {
 }
 
 exports.convert = function(event, context, cb) {
-  console.log(event);
   const query = event.queryStringParameters || {};
-  const mimeInput = query.inputFormat || parseMime(event.headers['Content-Type']) || 'json';
-  const mimeOutput = query.outputFormat || parseMime(event.headers['Accept']) || 'yaml';
+  const mimeInput = query.inputType || parseMime(event.headers['Content-Type']);
+  const mimeOutput = query.outputType || parseMime(event.headers['Accept']);
   const inp = event.body;
 
   if (!inp) {
@@ -25,11 +24,19 @@ exports.convert = function(event, context, cb) {
     return;
   }
 
+  if (!mimeInput || !mimeOutput) {
+    cb(null, {
+      statusCode: 400,
+      body: '400 Specify desired input and output in the query\n(`?outputType=...`/`?inputType=...`)\nor through the Accept/Content-Type headers\n',
+    });
+    return;
+  }
+
   const inputFormat = configuration[mimeInput];
   if (!inputFormat) {
     cb(null, {
       statusCode: 400,
-      body: `400 Invalid 'inputFormat' ${mimeInput}, send it with 'content-type' or '?inputFormat'\n`,
+      body: `400 Invalid 'inputType' ${mimeInput}, send it with 'content-type' or '?inputType'\n`,
     });
     return;
   }
@@ -37,7 +44,7 @@ exports.convert = function(event, context, cb) {
   if (!outputFormat) {
     cb(null, {
       statusCode: 400,
-      body: `400 Invalid 'outputFormat' ${mimeOutput}, send it with 'accept' or '?outputFormat'\n`,
+      body: `400 Invalid 'outputType' ${mimeOutput}, send it with 'accept' or '?outputType'\n`,
     });
     return;
   }
