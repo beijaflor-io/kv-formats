@@ -1,0 +1,18 @@
+service: kv-formats
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+  stage: production
+  region: us-east-1
+
+functions:
+  convert:
+    handler: handler.convert
+    events:
+      - http:
+          path: convert
+          method: post
