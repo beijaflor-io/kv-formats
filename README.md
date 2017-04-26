@@ -20,10 +20,10 @@ kv-formats -o toml ./package.json
 ```
 
 ## Formats supported
-- JSON
-- YAML
-- TOML
-- ini
-- querystring
-- plist
-- msgpack
+- `json`
+- `yaml`
+- `toml`
+- `ini`
+- `querystring`
+- `plist`
+- `msgpack`
