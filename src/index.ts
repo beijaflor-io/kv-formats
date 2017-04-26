@@ -102,6 +102,17 @@ const configuration = {
 
 export default configuration;
 
+export function from(format, input) {
+  const tmp = configuration[format].parse(input);
+  return {
+    to: (output) => configuration[output].stringify(tmp),
+  };
+}
+
+export function to(format, input) {
+  return configuration[format].stringify(input);
+}
+
 export async function readFileAuto(fp) {
   const extname = path.extname(fp).slice(1);
   const input = await (<any>fs).readFileAsync(fp).toString();
