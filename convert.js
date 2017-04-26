@@ -7,6 +7,7 @@ function parseMime(str) {
   if (/toml/.test(str)) return 'toml';
   if (/json/.test(str)) return 'json';
   if (/plist/.test(str)) return 'plist';
+  if (/msgpack/.test(str)) return 'msgpack';
   return null;
 }
 

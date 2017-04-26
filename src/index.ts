@@ -7,6 +7,7 @@ import * as _plist from 'plist';
 import * as _qs from 'qs';
 import * as _toml from 'toml-js';
 import * as _yaml from 'yamljs';
+import * as _msgpack from 'msgpack';
 
 Bluebird.promisifyAll(fs);
 
@@ -28,16 +29,15 @@ const json: ConfigReader & ConfigWriter = {
   }
 };
 
-const environment: ConfigReader & ConfigWriter = {
+const msgpack: ConfigReader & ConfigWriter = {
   parse(inp) {
-    return inp.split('\n');
+    return _msgpack.unpack(inp);
   },
 
   stringify(obj) {
-    return _qs.stringify(obj);
+    return _msgpack.pack(obj);
   }
 };
-
 
 const querystring: ConfigReader & ConfigWriter = {
   parse(inp) {
@@ -97,6 +97,7 @@ const configuration = {
   ini,
   json,
   plist,
+  msgpack,
 };
 
 export default configuration;
