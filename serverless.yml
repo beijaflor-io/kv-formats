@@ -11,7 +11,7 @@ provider:
 
 functions:
   convert:
-    handler: handler.convert
+    handler: convert.convert
     events:
       - http:
           path: convert

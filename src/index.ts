@@ -28,6 +28,17 @@ const json: ConfigReader & ConfigWriter = {
   }
 };
 
+const environment: ConfigReader & ConfigWriter = {
+  parse(inp) {
+    return inp.split('\n');
+  },
+
+  stringify(obj) {
+    return _qs.stringify(obj);
+  }
+};
+
+
 const querystring: ConfigReader & ConfigWriter = {
   parse(inp) {
     return _qs.parse(inp);
@@ -101,11 +112,3 @@ export function writeFileAuto(fp, contents) {
   const output = configuration[extname].stringify(contents);
   return (<any>fs).writeFileAsync(fp, output);
 }
-
-// const [outputName, _from] = process.argv.slice(2);
-// const inputName = path.extname(_from).slice(1);
-// const inputFormat = configuration[inputName];
-// const input = fs.readFileSync(_from).toString();
-// const obj = inputFormat.parse(input);
-// const outputFormat = configuration[outputName];
-// console.log(outputFormat.stringify(obj))
