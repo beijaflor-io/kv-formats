@@ -29,4 +29,4 @@ kv-formats -o toml ./package.json
 - `msgpack`
 
 ## License
-GPLv3
+AGPLv3
