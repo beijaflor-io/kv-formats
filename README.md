@@ -27,3 +27,6 @@ kv-formats -o toml ./package.json
 - `querystring`
 - `plist`
 - `msgpack`
+
+## License
+GPLv3
