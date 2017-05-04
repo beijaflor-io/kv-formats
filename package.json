@@ -1,6 +1,6 @@
 {
   "name": "kv-formats",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "bin": "./kv-formats",
   "description": "Library to parse/read to/from different key/value file/store formats",
   "main": "index.js",
